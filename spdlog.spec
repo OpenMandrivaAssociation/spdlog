@@ -3,8 +3,8 @@
 %global debug_package   %{nil}
 
 Name:           spdlog
-Version:        1.4.2
-Release:        1
+Version:	1.5.0
+Release:	1
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
@@ -67,5 +67,5 @@ popd
 %license LICENSE
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/spdlog
+%{_libdir}/cmake/spdlog/*.cmake
 %{_libdir}/*.a
