@@ -4,7 +4,7 @@
 
 Name:           spdlog
 Version:	1.5.0
-Release:	1
+Release:	2
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
@@ -13,9 +13,7 @@ Source0:        https://github.com/%{user}/%{name}/archive/v%{version}.tar.gz
 
 BuildRequires:  ninja
 BuildRequires:  fmt-devel
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
-BuildRequires:  gcc
 
 %description
 This is a packaged version of the gabime/spdlog header-only C++
