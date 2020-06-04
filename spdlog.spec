@@ -1,10 +1,12 @@
-%global major 0
+%global major 1
 %global user            gabime
 %global debug_package   %{nil}
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname -d %{name}
 
 Name:           spdlog
-Version:	1.5.0
-Release:	3
+Version:	1.6.1
+Release:	1
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
@@ -19,7 +21,16 @@ BuildRequires:  cmake
 This is a packaged version of the gabime/spdlog header-only C++
 logging library available at Github.
 
-%package devel
+
+%package -n %{libname}
+Summary:	Super fast C++ logging library
+Group:		System/Libraries
+
+%description -n %{libname}
+Super fast C++ logging library.
+
+
+%package -n	%{devname}
 Group:		Development/C
 Summary:        Development files for %{name}
 Provides:       %{name}-static = %{version}-%{release}
@@ -27,7 +38,7 @@ Provides:       %{name} = %{version}-%{release}
 Requires:       libstdc++-devel
 Requires:       fmt-devel
 
-%description devel
+%description -n %{devname}
 The %{name}-devel package contains C++ header files for developing
 applications that use %{name}.
 
@@ -44,6 +55,7 @@ pushd %{_target_platform}
     cd ..
     %cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
+    -DSPDLOG_BUILD_SHARED=ON \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DSPDLOG_BUILD_BENCH=OFF \
     -DSPDLOG_BUILD_TESTS=ON \
@@ -53,6 +65,7 @@ popd
 %ninja_build -C %{_target_platform}
 
 %check
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 pushd %{_target_platform}
     ctest --output-on-failure
 popd
@@ -60,10 +73,13 @@ popd
 %install
 %ninja_install -C %{_target_platform}
 
-%files devel
+%files -n %{libname}
+%{_libdir}/lib%{name}.so.%{major}*
+
+%files -n %{devname}
 %doc README.md example/
 %license LICENSE
 %{_includedir}/%{name}
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/spdlog/*.cmake
-%{_libdir}/*.a
