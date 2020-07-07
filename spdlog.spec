@@ -6,7 +6,7 @@
 
 Name:           spdlog
 Version:	1.6.1
-Release:	1
+Release:	2
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
