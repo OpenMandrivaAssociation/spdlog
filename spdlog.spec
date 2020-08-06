@@ -5,13 +5,13 @@
 %define devname %mklibname -d %{name}
 
 Name:           spdlog
-Version:	1.6.1
-Release:	2
+Version:	1.7.0
+Release:	1
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
 URL:            https://github.com/%{user}/%{name}/
-Source0:        https://github.com/%{user}/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/%{user}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  ninja
 BuildRequires:  fmt-devel
