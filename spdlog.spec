@@ -11,7 +11,7 @@ Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
 URL:            https://github.com/%{user}/%{name}/
-Source0:        https://github.com/%{user}/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/%{user}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  ninja
 BuildRequires:  fmt-devel
