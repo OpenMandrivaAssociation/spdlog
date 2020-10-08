@@ -79,6 +79,6 @@ popd
 %doc README.md example/
 %license LICENSE
 %{_includedir}/%{name}
-%{_libdir}/lib%{name}.so
+#{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/spdlog/*.cmake
