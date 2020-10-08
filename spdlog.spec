@@ -44,7 +44,7 @@ applications that use %{name}.
 
 %prep
 %autosetup
-mkdir -p %{_target_platform}
+#mkdir -p %{_target_platform}
 find . -name '.gitignore' -exec rm {} \;
 sed -i -e "s,\r,," README.md
 # FC compatibility:
@@ -57,7 +57,8 @@ sed -i -e "s,\r,," README.md
     -DSPDLOG_BUILD_TESTS=ON \
     -DSPDLOG_FMT_EXTERNAL=ON \
     -DSPDLOG_BUILD_SHARED=ON
-%ninja_build -C
+    
+%ninja_build
 
 %check
 %ctest
