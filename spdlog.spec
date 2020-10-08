@@ -48,30 +48,23 @@ mkdir -p %{_target_platform}
 find . -name '.gitignore' -exec rm {} \;
 sed -i -e "s,\r,," README.md
 # FC compatibility:
-ln -sf %{_target_platform} build
+#ln -sf %{_target_platform} build
 
 %build
-pushd %{_target_platform}
-    cd ..
-    %cmake -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DSPDLOG_BUILD_SHARED=ON \
+%cmake -G Ninja \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DSPDLOG_BUILD_BENCH=OFF \
     -DSPDLOG_BUILD_TESTS=ON \
     -DSPDLOG_FMT_EXTERNAL=ON \
- 
-popd
-%ninja_build -C %{_target_platform}
+    -DSPDLOG_BUILD_SHARED=ON
+%ninja_build -C
 
-#check
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
-#pushd %{_target_platform}
-#    ctest --output-on-failure
-#popd
+%check
+%ctest
 
 %install
-%ninja_install -C %{_target_platform}
+%ninja_install -C
+
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{major}*
