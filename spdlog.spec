@@ -6,7 +6,7 @@
 
 Name:           spdlog
 Version:	1.8.1
-Release:	1
+Release:	2
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
@@ -55,7 +55,6 @@ pushd %{_target_platform}
     cd ..
     %cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DSPDLOG_BUILD_SHARED=ON \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DSPDLOG_BUILD_BENCH=OFF \
     -DSPDLOG_BUILD_TESTS=ON \
