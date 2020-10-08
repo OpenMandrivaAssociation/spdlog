@@ -82,3 +82,4 @@ popd
 #{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/spdlog/*.cmake
+%{_libdir}/libspdlog.a
