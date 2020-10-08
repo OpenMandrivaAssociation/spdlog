@@ -53,6 +53,8 @@ sed -i -e "s,\r,," README.md
 #ln -sf %{_target_platform} build
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake -G Ninja \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DSPDLOG_BUILD_BENCH=OFF \
