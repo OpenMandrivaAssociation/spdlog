@@ -16,6 +16,8 @@ Source0:        https://github.com/%{user}/%{name}/archive/v%{version}/%{name}-%
 BuildRequires:  ninja
 BuildRequires:  fmt-devel
 BuildRequires:  cmake
+BuildRequires:  cmake(fmt)
+BuildRequires:  pkgconfig(systemd)
 
 %description
 This is a packaged version of the gabime/spdlog header-only C++
