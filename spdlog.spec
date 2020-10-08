@@ -64,7 +64,7 @@ sed -i -e "s,\r,," README.md
 %ctest
 
 %install
-%ninja_install -C
+%ninja_install -C build
 
 
 %files -n %{libname}
