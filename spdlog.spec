@@ -60,9 +60,6 @@ sed -i -e "s,\r,," README.md
     
 %ninja_build
 
-%check
-%ctest
-
 %install
 %ninja_install -C build
 
