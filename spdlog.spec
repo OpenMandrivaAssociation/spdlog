@@ -73,7 +73,7 @@ popd
 %ninja_install -C %{_target_platform}
 
 %files -n %{libname}
-%{_libdir}/lib%{name}.so.%{major}*
+#{_libdir}/lib%{name}.so.%{major}*
 
 %files -n %{devname}
 %doc README.md example/
