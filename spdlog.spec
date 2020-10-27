@@ -6,7 +6,7 @@
 
 Name:           spdlog
 Version:	1.8.1
-Release:	1
+Release:	2
 Summary:        Super fast C++ logging library
 Group:		Development/C
 License:        MIT
@@ -35,6 +35,7 @@ Group:		Development/C
 Summary:        Development files for %{name}
 Provides:       %{name}-static = %{version}-%{release}
 Provides:       %{name} = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
 Requires:       libstdc++-devel
 Requires:       fmt-devel
 
