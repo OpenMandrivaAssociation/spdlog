@@ -1,21 +1,19 @@
 %global major 1
-%global user            gabime
-%global debug_package   %{nil}
+%global debug_package %{nil}
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname -d %{name}
 
-Name:           spdlog
-Version:	1.8.1
-Release:	3
-Summary:        Super fast C++ logging library
+Summary:	Super fast C++ logging library
+Name:		spdlog
+Version:	1.8.2
+Release:	1
 Group:		Development/C
-License:        MIT
-URL:            https://github.com/%{user}/%{name}/
-Source0:        https://github.com/%{user}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-
-BuildRequires:  ninja
-BuildRequires:  fmt-devel
-BuildRequires:  cmake
+License:	MIT
+URL:		https://github.com/gabime/%{name}/
+Source0:	https://github.com/gabime/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:	ninja
+BuildRequires:	pkgconfig(fmt)
+BuildRequires:	cmake
 
 %description
 This is a packaged version of the gabime/spdlog header-only C++
@@ -29,22 +27,21 @@ Group:		System/Libraries
 %description -n %{libname}
 Super fast C++ logging library.
 
-
-%package -n	%{devname}
+%package -n %{devname}
 Group:		Development/C
-Summary:        Development files for %{name}
-Provides:       %{name}-static = %{version}-%{release}
-Provides:       %{name} = %{version}-%{release}
+Summary:	Development files for %{name}
+Provides:	%{name}-static = %{version}-%{release}
+Provides:	%{name} = %{version}-%{release}
 Requires:	%{libname} = %{EVRD}
-Requires:       libstdc++-devel
-Requires:       fmt-devel
+Requires:	libstdc++-devel
+Requires:	pkgconfig(fmt)
 
 %description -n %{devname}
 The %{name}-devel package contains C++ header files for developing
 applications that use %{name}.
 
 %prep
-%autosetup
+%autosetup -p1
 mkdir -p %{_target_platform}
 find . -name '.gitignore' -exec rm {} \;
 sed -i -e "s,\r,," README.md
@@ -61,7 +58,7 @@ pushd %{_target_platform}
     -DSPDLOG_BUILD_BENCH=OFF \
     -DSPDLOG_BUILD_TESTS=ON \
     -DSPDLOG_FMT_EXTERNAL=ON \
- 
+
 popd
 %ninja_build -C %{_target_platform}
 
