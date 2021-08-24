@@ -1,11 +1,12 @@
 %global major 1
-%global debug_package %{nil}
+#global debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname -d %{name}
 
 Summary:	Super fast C++ logging library
 Name:		spdlog
-Version:	1.8.2
+Version:	1.9.2
 Release:	1
 Group:		Development/C
 License:	MIT
@@ -56,7 +57,7 @@ pushd %{_target_platform}
     -DSPDLOG_BUILD_SHARED=ON \
     -DSPDLOG_BUILD_EXAMPLES=OFF \
     -DSPDLOG_BUILD_BENCH=OFF \
-    -DSPDLOG_BUILD_TESTS=ON \
+    -DSPDLOG_BUILD_TESTS=OFF \
     -DSPDLOG_FMT_EXTERNAL=ON \
 
 popd
