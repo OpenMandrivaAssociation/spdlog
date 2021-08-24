@@ -1,5 +1,6 @@
 %global major 1
-%global debug_package %{nil}
+#global debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname -d %{name}
 
