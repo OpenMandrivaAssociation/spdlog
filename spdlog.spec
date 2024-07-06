@@ -10,11 +10,16 @@ Version:	1.14.1
 Release:	3
 Group:		Development/C
 License:	MIT
-URL:		https://github.com/gabime/%{name}/
-Source0:	https://github.com/gabime/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:	ninja
+URL:		https://github.com/gabime/spdlog/
+Source0:	https://github.com/gabime/spdlog/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(fmt)
-BuildRequires:	cmake
+BuildSystem:	cmake
+BuildOption:	-DCMAKE_BUILD_TYPE=Release
+BuildOption:	-DSPDLOG_BUILD_SHARED=ON
+BuildOption:	-DSPDLOG_BUILD_EXAMPLE=OFF
+BuildOption:	-DSPDLOG_BUILD_BENCH=OFF
+BuildOption:	-DSPDLOG_BUILD_TESTS=OFF
+BuildOption:	-DSPDLOG_FMT_EXTERNAL=ON
 
 %description
 This is a packaged version of the gabime/spdlog header-only C++
@@ -41,36 +46,9 @@ Requires:	pkgconfig(fmt)
 The %{name}-devel package contains C++ header files for developing
 applications that use %{name}.
 
-%prep
-%autosetup -p1
-mkdir -p %{_target_platform}
+%prep -a
 find . -name '.gitignore' -exec rm {} \;
 sed -i -e "s,\r,," README.md
-# FC compatibility:
-ln -sf %{_target_platform} build
-
-%build
-pushd %{_target_platform}
-    cd ..
-    %cmake -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DSPDLOG_BUILD_SHARED=ON \
-    -DSPDLOG_BUILD_EXAMPLES=OFF \
-    -DSPDLOG_BUILD_BENCH=OFF \
-    -DSPDLOG_BUILD_TESTS=OFF \
-    -DSPDLOG_FMT_EXTERNAL=ON \
-
-popd
-%ninja_build -C %{_target_platform}
-
-#check
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
-#pushd %{_target_platform}
-#    ctest --output-on-failure
-#popd
-
-%install
-%ninja_install -C %{_target_platform}
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{major}*
