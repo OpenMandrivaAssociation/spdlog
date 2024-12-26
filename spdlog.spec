@@ -7,7 +7,7 @@
 Summary:	Super fast C++ logging library
 Name:		spdlog
 Version:	1.15.0
-Release:	1
+Release:	2
 Group:		Development/C
 License:	MIT
 URL:		https://github.com/gabime/spdlog/
