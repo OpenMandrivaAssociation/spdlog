@@ -7,12 +7,13 @@
 Summary:	Super fast C++ logging library
 Name:		spdlog
 Version:	1.15.0
-Release:	2
+Release:	3
 Group:		Development/C
 License:	MIT
 URL:		https://github.com/gabime/spdlog/
 Source0:	https://github.com/gabime/spdlog/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:  https://github.com/gabime/spdlog/commit/276ee5f5c0eb13626bd367b006ace5eae9526d8a.patch
+Patch0:		276ee5f5c0eb13626bd367b006ace5eae9526d8a.patch
+Patch1:		remove-unused-overload-fmt.patch
 BuildRequires:	pkgconfig(fmt)
 BuildSystem:	cmake
 BuildOption:	-DCMAKE_BUILD_TYPE=Release
