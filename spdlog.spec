@@ -12,7 +12,7 @@ Group:		Development/C
 License:	MIT
 URL:		https://github.com/gabime/spdlog/
 Source0:	https://github.com/gabime/spdlog/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:		276ee5f5c0eb13626bd367b006ace5eae9526d8a.patch
+#Patch0:		276ee5f5c0eb13626bd367b006ace5eae9526d8a.patch
 Patch1:		remove-unused-overload-fmt.patch
 BuildRequires:	pkgconfig(fmt)
 BuildSystem:	cmake
